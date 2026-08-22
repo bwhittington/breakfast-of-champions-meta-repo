@@ -1,0 +1,33 @@
+# Breakfast of Champions — Meta Workspace
+
+You are working in a two-repo workspace. Treat paths carefully.
+
+## Layout
+
+- `specs/` — OpenSpec source of truth (design, requirements, deltas)
+  - `specs/canonical/` — accepted, stable specs
+  - `specs/active_deltas/` — in-flight changes not yet merged into canonical
+- `game-project/` — Godot game implementation (separate git repo)
+  - `scenes/`, `scripts/`, `project.godot`
+
+Open this folder (`breakfast-of-champions-meta/`) as the Cursor workspace root. Do not open `game-project/` alone unless the user asks.
+
+## Spec-first rules
+
+1. Specs are authoritative. Before implementing gameplay, systems, or content changes, read relevant files under `specs/canonical/` and any matching work under `specs/active_deltas/`.
+2. Prefer proposing or updating an active delta over inventing behavior that contradicts canonical specs.
+3. When a delta is accepted, update canonical specs and remove or archive the delta.
+4. Keep implementation details in `game-project/`; keep intent, constraints, and acceptance criteria in `specs/`.
+
+## Godot implementation rules
+
+1. Put scenes in `game-project/scenes/` and scripts in `game-project/scripts/` unless an existing convention says otherwise.
+2. Prefer small, named scripts over large god-objects.
+3. Do not commit Godot editor cache (`.godot/`) or OS junk; respect `game-project/.gitignore`.
+4. Meta-repo commits must not swallow the nested Godot repo. `game-project/` is independently versioned.
+
+## Git boundaries
+
+- Meta repo (`breakfast-of-champions-meta/`): tracks `.cursorrules`, `specs/`, and meta tooling only.
+- Godot repo (`game-project/`): tracks game assets, scenes, scripts, and `project.godot`.
+- Never mix commits across the two remotes in one operation. Stage and commit inside the correct `.git` root.

@@ -1,0 +1,9 @@
+# Nested Godot repo — tracked independently
+/game-project/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
