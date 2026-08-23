@@ -10,6 +10,7 @@ SPEC: specs/canonical/game_loop.md#session-flow
 SPEC: specs/canonical/map_system.md#node-types
 CHANGE: openspec/changes/squad-select-post-battle-shop/
 TASK: 1.1, 1.2, 1.3
+DISPATCH: openspec-dispatch-apply — run openspec instructions apply for CHANGE; implement TASK lines only.
 ```
 
 ## Affected code

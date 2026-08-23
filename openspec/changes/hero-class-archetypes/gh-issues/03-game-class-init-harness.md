@@ -7,6 +7,7 @@ Party heroes do not receive class baseline stats when added to a run. Harness/de
 ```
 CHANGE: openspec/changes/hero-class-archetypes/specs/characters/spec.md
 TASK: 3.1, 3.2
+DISPATCH: openspec-dispatch-apply — run openspec instructions apply for CHANGE; implement TASK lines only.
 ```
 
 ## Affected code

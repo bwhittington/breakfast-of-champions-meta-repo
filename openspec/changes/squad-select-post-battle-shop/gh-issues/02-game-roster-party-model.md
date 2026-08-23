@@ -8,6 +8,7 @@ Game roster data lists only three party ids. `RunController` tracks a single `st
 SPEC: specs/canonical/characters.md#party-breakfast-foods
 CHANGE: openspec/changes/squad-select-post-battle-shop/specs/characters/spec.md
 TASK: 2.1, 2.2, 2.3
+DISPATCH: openspec-dispatch-apply — run openspec instructions apply for CHANGE; implement TASK lines only.
 ```
 
 ## Affected code

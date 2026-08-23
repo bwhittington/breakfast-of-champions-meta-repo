@@ -9,6 +9,7 @@ SPEC: specs/canonical/game_loop.md#combat-phase
 CHANGE: openspec/changes/squad-select-post-battle-shop/specs/post-battle-shop/spec.md
 CHANGE: openspec/changes/squad-select-post-battle-shop/specs/game-loop/spec.md
 TASK: 3.1, 3.2, 3.3, 3.4
+DISPATCH: openspec-dispatch-apply — run openspec instructions apply for CHANGE; implement TASK lines only.
 ```
 
 ## Affected code

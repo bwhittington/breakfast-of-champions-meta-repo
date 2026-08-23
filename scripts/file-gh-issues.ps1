@@ -5,9 +5,10 @@
 $ErrorActionPreference = "Stop"
 $MetaRepo = "bwhittington/breakfast-of-champions-meta-repo"
 $GameRepo = "bwhittington/breakfast-of-champions"
-$Root = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
-if (Test-Path (Join-Path $PSScriptRoot "..\openspec")) {
-    $Root = Split-Path $PSScriptRoot -Parent
+# scripts/ → meta-repo root
+$Root = Resolve-Path (Join-Path $PSScriptRoot "..")
+if (-not (Test-Path (Join-Path $Root "openspec"))) {
+    throw "Expected openspec/ under meta root: $Root"
 }
 
 function Ensure-Label {

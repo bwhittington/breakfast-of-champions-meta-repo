@@ -8,6 +8,7 @@ No pre-run UI to pick exactly 3 heroes from the unlocked roster. Title Play stil
 SPEC: specs/canonical/game_loop.md#session-flow
 CHANGE: openspec/changes/squad-select-post-battle-shop/specs/character-select/spec.md
 TASK: 4.1, 4.2, 4.3
+DISPATCH: openspec-dispatch-apply — run openspec instructions apply for CHANGE; implement TASK lines only.
 ```
 
 ## Affected code

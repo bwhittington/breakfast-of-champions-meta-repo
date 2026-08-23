@@ -52,7 +52,7 @@ idea (vague)
   → operator confirms brief
   → /opsx-propose        # proposal + delta + design + tasks.md, then auto-commit+push meta
   → optional: one /gh-issue per tasks.md chunk
-  → /dispatch N          # agents implement in game-project/
+  → /dispatch N          # each slot: openspec-dispatch-apply on one issue (CHANGE + TASK)
   → /opsx-sync + /opsx-archive when behavior is accepted into canonical
 ```
 
@@ -62,7 +62,7 @@ Solo shortcut (skip GitHub): `/opsx-groom` → confirm → propose → `/opsx-ap
 |---|---|---|
 | Groom first | Idea is vague or needs player-fantasy clarity | `/opsx-groom` then propose |
 | Solo | One clear change, operator driving | `/opsx-propose` → `/opsx-apply` |
-| Multi-agent | Parallel tasks | propose → `/gh-issue` per task → `/dispatch` |
+| Multi-agent | Parallel tasks | propose → `/gh-issue` per task → `/dispatch` (each slot = scoped `/opsx-apply`) |
 
 ### Issue body contract (slice, not whole change)
 
@@ -134,9 +134,22 @@ Exactly one type + exactly one priority. Add lane + subsystem when known. Add `a
 
 ### Dispatch notes for this project
 
+**Dispatch = OpenSpec apply per issue slice (hard).** Each slot MUST follow
+`.cursor/skills/openspec-dispatch-apply/SKILL.md`:
+
+1. Parse `CHANGE:` and `TASK:` from the GitHub issue Traceability block.
+2. Run `openspec instructions apply --change "<name>" --json` and read all `contextFiles` **before** editing code.
+3. Implement **only** the listed `TASK:` items; check off `- [x]` in `openspec/changes/<name>/tasks.md`.
+4. Issue acceptance criteria alone are not sufficient — delta specs + design win on conflict.
+
+Issues **without** `CHANGE:` are not dispatch-ready (label `needs-spec-input`).
+
+- Orchestrator: `.cursor/skills/dispatch-orchestrator/SKILL.md` + `/dispatch`.
+- Solo full change (no issue): `/opsx-apply` + `openspec-apply-change` skill.
 - Implementation agents work under `game-project/` worktrees branching from `origin/main` of the **game** remote.
 - Meta/spec-only issues stay on the meta repo; do not open game PRs for pure docs unless docs live in meta.
 - Prefer bundling same-surface small tasks (e.g. three `map_system` copy fixes) into one issue/PR.
+- Dispatch slots MUST NOT run `/opsx-archive` or `/opsx-sync` — operator only.
 
 ## Operator commands (cheat sheet)
 
@@ -149,7 +162,7 @@ Exactly one type + exactly one priority. Add lane + subsystem when known. Add `a
 | `/opsx-sync` / `/opsx-archive` | Merge deltas → canonical, close change |
 | `/gh-issue …` | File a groomed, dispatchable slice |
 | `/gh-issue-groom` / `/gh-issue-recon` | Clarify / size an existing GitHub issue |
-| `/dispatch N` | Orchestrate N slots against ready issues |
+| `/dispatch N` | Orchestrate N slots; each runs openspec-dispatch-apply on one issue |
 | `/rescue` | Unstick a PR / red CI |
 
 ## Token discipline

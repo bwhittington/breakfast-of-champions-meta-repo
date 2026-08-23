@@ -36,6 +36,8 @@ Use slash commands (restart Cursor if they are missing):
 - `/opsx-sync` — merge delta specs into main specs
 - `/opsx-archive` — finish a change and archive it
 - `/opsx-update` — revise planning artifacts
+- `/dispatch N` — parallel slots; **each slot runs OpenSpec apply** scoped to issue `CHANGE:` + `TASK:` (see `.cursor/skills/openspec-dispatch-apply/SKILL.md`)
+- `/gh-issue` — file a dispatch-ready slice (must include `CHANGE:` traceability)
 
 Prefer `/opsx-groom` over bare `/opsx-propose` when the idea is vague or player-facing.
 

@@ -8,6 +8,7 @@ Roster data has no `class` field. No shared baseline stat table exists for the s
 SPEC: specs/canonical/characters.md#shared-combatant-model
 CHANGE: openspec/changes/hero-class-archetypes/specs/hero-classes/spec.md
 TASK: 2.1, 2.2
+DISPATCH: openspec-dispatch-apply — run openspec instructions apply for CHANGE; implement TASK lines only.
 ```
 
 ## Affected code

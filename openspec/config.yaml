@@ -5,7 +5,7 @@ context: |
   Canonical behavior: specs/canonical/{game_loop,characters,map_system}.md
   Implementation lives in game-project/ (separate git remote).
   Agent bindings and GitHub/OpenSpec bridge: CLAUDE.md (required reading).
-  Pipeline: /opsx-propose → slice tasks into /gh-issue → /dispatch (or /opsx-apply solo).
+  Pipeline: /opsx-propose → slice tasks into /gh-issue → /dispatch (each slot = openspec-dispatch-apply on CHANGE+TASK; or /opsx-apply solo for full change).
   Issues cite SPEC:/CHANGE:/TASK: paths; do not duplicate full design into tickets.
 
 rules:

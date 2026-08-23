@@ -9,6 +9,7 @@ SPEC: specs/canonical/characters.md#shared-combatant-model
 CHANGE: openspec/changes/hero-class-archetypes/specs/hero-classes/spec.md
 CHANGE: openspec/changes/hero-class-archetypes/specs/characters/spec.md
 TASK: 1.1, 1.2
+DISPATCH: openspec-dispatch-apply — run openspec instructions apply for CHANGE; implement TASK lines only.
 ```
 
 ## Affected code
