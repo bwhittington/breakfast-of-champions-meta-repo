@@ -7,6 +7,8 @@ It defines the OpenSpec ↔ GitHub issue bridge, repo slugs, labels, and traceab
 
 **Run policy:** When the operator says run/dispatch/go (or uses `/dispatch`), execute without asking permission. Use `CLAUDE.md` slot-count default if N is omitted. Only pause for irreversible underspecified actions.
 
+**After `/opsx-propose`:** Commit and push the new `openspec/changes/<name>/` tree on the current meta branch immediately. Do not wait to be asked. Do not mix `game-project/` or unrelated files. Do not start `/opsx-apply`.
+
 ## Layout
 
 - `specs/` — design source of truth

@@ -121,8 +121,8 @@ When the operator says yes / propose / "create the change":
 
 1. Treat the Design Brief as the input description.
 2. Follow the **openspec-propose** skill / `/opsx-propose` workflow
-   (planning artifacts only — still no game code).
-3. End with: artifacts ready; next is `/opsx-apply` **or** `/gh-issue` slices + `/dispatch`.
+   (planning artifacts only — still no game code; **then** commit+push `openspec/changes/<slug>/` on the meta repo).
+3. End with: artifacts ready and pushed; next is `/opsx-apply` **or** `/gh-issue` slices + `/dispatch`.
 
 If they say revise, return to the groom loop. Do not propose on your own initiative.
 

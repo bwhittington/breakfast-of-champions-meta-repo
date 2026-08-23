@@ -121,11 +121,21 @@ When the user is ready to implement, they must start the apply workflow explicit
    openspec status --change "<name>"
    ```
 
+7. **Update the meta repo (Breakfast of Champions)**
+
+   This workspace requires the change to land on the meta remote as soon as propose finishes. Do not wait for a commit click:
+
+   - Stage only `openspec/changes/<name>/` (plus files this propose wrote). Exclude `game-project/` and unrelated dirty files.
+   - Commit on the current meta branch with subject `propose <name> <short why>.`
+   - `git push -u origin HEAD`
+   - Do not open a PR, merge to `main`, sync canonical specs, or start `/opsx-apply`.
+
 **Output**
 
-After completing all artifacts, summarize:
+After completing all artifacts and the meta push, summarize:
 - Change name and location
 - List of artifacts created with brief descriptions, plus any conditional artifact you skipped and why
+- Commit SHA and remote branch
 - What's ready: "All artifacts needed for implementation are ready."
 - Prompt: "The artifacts are ready for review. When you are ready, run `/opsx-apply` or ask me to apply this change."
 

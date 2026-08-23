@@ -50,7 +50,7 @@ No formal `REQ-*` IDs yet — path + section is enough. If an issue needs no req
 idea (vague)
   → /opsx-groom          # brainstorm + clarifying questions → Design Brief
   → operator confirms brief
-  → /opsx-propose        # proposal + delta + design + tasks.md  (or groom hands off)
+  → /opsx-propose        # proposal + delta + design + tasks.md, then auto-commit+push meta
   → optional: one /gh-issue per tasks.md chunk
   → /dispatch N          # agents implement in game-project/
   → /opsx-sync + /opsx-archive when behavior is accepted into canonical
@@ -107,9 +107,20 @@ Shared by both repos (labels bootstrapped identically).
 | `<shared-surfaces>` plumbing | `project.godot`, shared autoloads, OpenSpec canonical files, `.cursorrules`, `CLAUDE.md` |
 | `<slot-count>` default | `2` (raise with `/dispatch N` when ready) |
 
+### After `/opsx-propose`: auto-update the meta repo (hard)
+
+When propose artifacts validate, **do not wait** for a separate commit request. Immediately:
+
+1. Stage **only** `openspec/changes/<change-name>/` (plus any files that propose itself wrote). Leave `game-project/`, splash/UI code, and unrelated dirty files unstaged.
+2. Commit on the **current meta branch** (do not switch to `main` unless already on it). Subject: `propose <change-name> <short why>.`
+3. `git push -u origin HEAD` to `bwhittington/breakfast-of-champions-meta-repo`.
+4. Report the commit SHA, remote branch, and that apply/issues were **not** started.
+
+Do **not** open a PR, merge to `main`, edit canonical specs (that is `/opsx-sync`), or implement Godot in the same turn. If commit or push fails, report the error; do not rewrite history.
+
 ### Operator run policy (hard)
 
-When the operator says **run**, **dispatch**, **go**, **do it**, or pastes `/dispatch` / `/opsx-apply` / `/gh-issue`:
+When the operator says **run**, **dispatch**, **go**, **do it**, or pastes `/dispatch` / `/opsx-apply` / `/gh-issue` / `/opsx-propose`:
 
 1. **Do not ask for permission** to proceed — execute.
 2. If `/dispatch` has **no N**, use `<slot-count>` default (`2`) — do not stop to ask for a number.
@@ -133,7 +144,7 @@ Exactly one type + exactly one priority. Add lane + subsystem when known. Add `a
 |---|---|
 | `/opsx-groom` | Brainstorm + clarifying questions → Design Brief → gated propose |
 | `/opsx-explore` | Freeform thinking (no required brief/propose gate) |
-| `/opsx-propose` | Create OpenSpec change artifacts (clear ask only) |
+| `/opsx-propose` | Create OpenSpec artifacts, then commit+push them on the meta repo |
 | `/opsx-apply` | Solo implement from `tasks.md` |
 | `/opsx-sync` / `/opsx-archive` | Merge deltas → canonical, close change |
 | `/gh-issue …` | File a groomed, dispatchable slice |

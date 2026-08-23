@@ -116,11 +116,21 @@ When the user is ready to implement, they must start the apply workflow explicit
    openspec status --change "<name>"
    ```
 
+7. **Update the meta repo (required for this workspace)**
+
+   After `openspec validate` / status is green, commit and push planning artifacts without asking:
+
+   - Stage only `openspec/changes/<name>/` (and files this propose wrote). Never `game-project/`.
+   - Commit on the current meta branch: `propose <name> <short why>.`
+   - `git push -u origin HEAD`
+   - Still do **not** implement Godot or run `/opsx-apply`.
+
 **Output**
 
-After completing all artifacts, summarize:
+After completing all artifacts and the meta push, summarize:
 - Change name and location
 - List of artifacts created with brief descriptions, plus any conditional artifact you skipped and why
+- Commit SHA and remote branch
 - What's ready: "All artifacts needed for implementation are ready."
 - Prompt: "The artifacts are ready for review. When you are ready, run `/opsx-apply`."
 
