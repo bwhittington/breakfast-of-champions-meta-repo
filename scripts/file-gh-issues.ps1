@@ -13,14 +13,20 @@ if (-not (Test-Path (Join-Path $Root "openspec"))) {
 
 function Ensure-Label {
     param([string]$Repo, [string]$Name, [string]$Color, [string]$Description = "")
-    $existing = gh label list --repo $Repo --json name -q ".[] | select(.name==`"$Name`") | .name" 2>$null
-    if (-not $existing) {
-        gh label create $Name --repo $Repo --color $Color --description $Description 2>$null
+    $names = gh label list --repo $Repo --limit 100 --json name | ConvertFrom-Json | ForEach-Object { $_.name }
+    if ($names -contains $Name) {
+        return
+    }
+    gh label create $Name --repo $Repo --color $Color --description $Description
+    if ($LASTEXITCODE -ne 0) {
+        # Race or already exists — ignore
+        Write-Host "  (label may already exist: $Name)"
     }
 }
 
 function Bootstrap-Labels {
     param([string]$Repo)
+    Write-Host "Bootstrapping labels on $Repo..."
     $labels = @(
         @{ Name = "bug"; Color = "d73a4a"; Desc = "Something isn't working" },
         @{ Name = "enhancement"; Color = "a2eeef"; Desc = "New feature or request" },
@@ -53,8 +59,17 @@ function New-GhIssue {
         [string]$BodyFile,
         [string[]]$Labels
     )
-    $labelArgs = $Labels | ForEach-Object { "--label", $_ }
-    gh issue create --repo $Repo --title $Title --body-file $BodyFile @labelArgs
+    if (-not (Test-Path $BodyFile)) {
+        throw "Body file missing: $BodyFile"
+    }
+    $labelArgs = @()
+    foreach ($lab in $Labels) {
+        $labelArgs += @("--label", $lab)
+    }
+    & gh issue create --repo $Repo --title $Title --body-file $BodyFile @labelArgs
+    if ($LASTEXITCODE -ne 0) {
+        throw "Failed to create issue: $Title"
+    }
 }
 
 gh auth status | Out-Null
