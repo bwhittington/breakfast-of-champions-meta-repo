@@ -107,6 +107,16 @@ Shared by both repos (labels bootstrapped identically).
 | `<shared-surfaces>` plumbing | `project.godot`, shared autoloads, OpenSpec canonical files, `.cursorrules`, `CLAUDE.md` |
 | `<slot-count>` default | `2` (raise with `/dispatch N` when ready) |
 
+### Operator run policy (hard)
+
+When the operator says **run**, **dispatch**, **go**, **do it**, or pastes `/dispatch` / `/opsx-apply` / `/gh-issue`:
+
+1. **Do not ask for permission** to proceed — execute.
+2. If `/dispatch` has **no N**, use `<slot-count>` default (`2`) — do not stop to ask for a number.
+3. Bootstrap blockers yourself when required to dispatch (empty remote, missing worktree base, labels) — report what you did, don't pause for approval.
+4. Only ask when a choice is **materially irreversible** and underspecified (e.g. force-push to main, delete a repo, contradict a locked canonical spec). "Which issue first" among ready P1s is **not** a pause — pick by priority then createdAt.
+5. Prefer action + a slot table over clarifying questions.
+
 ### Filing-time labels
 
 Exactly one type + exactly one priority. Add lane + subsystem when known. Add `agent-model:*` / `agent-effort:*` only when the operator pins them. Never apply `agent-claimed` at filing time.

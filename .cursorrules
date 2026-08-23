@@ -5,6 +5,8 @@ Two-repo workspace. Treat paths carefully.
 **Agent bindings:** Read `CLAUDE.md` before `/gh-issue`, `/dispatch`, or `/opsx-*`.
 It defines the OpenSpec ↔ GitHub issue bridge, repo slugs, labels, and traceability.
 
+**Run policy:** When the operator says run/dispatch/go (or uses `/dispatch`), execute without asking permission. Use `CLAUDE.md` slot-count default if N is omitted. Only pause for irreversible underspecified actions.
+
 ## Layout
 
 - `specs/` — design source of truth
