@@ -38,15 +38,15 @@ Optional (may be filled by later deltas):
 
 ### Starter roster (seed — revise freely)
 
-| id            | display_name   | tags              | fantasy                                      |
-|---------------|----------------|-------------------|----------------------------------------------|
-| `egg-scramble`| Egg Scramble   | `hot`, `savory`   | Flexible striker; reliable basic attacks     |
-| `toast`       | Toast          | `hot`, `savory`   | Tanky; guards allies                         |
-| `pancake`     | Pancake        | `hot`, `sweet`    | Support; stacks syrup (buffs)                |
-| `cereal`      | Cereal         | `cold`, `sweet`   | Ranged / chip damage; milk resource theme    |
-| `bacon`       | Bacon          | `hot`, `savory`   | High speed glass cannon                      |
+Live party seed matches the kitchen title poster. Identity only — no skill math.
 
-These ids are **canonical placeholders**. Replace or extend via an active delta before treating art/code as final.
+| id       | display_name              | role  | tags            | fantasy                                              |
+|----------|---------------------------|-------|-----------------|------------------------------------------------------|
+| `cereal` | Cereal / Cereal Soldier   | party | `cold`, `sweet` | Cold/sweet chip identity; milk resource theme        |
+| `waffle` | Waffle Warrior            | party | `hot`, `savory` | Former hangry-waffle flipped to a party hero         |
+| `bacon`  | Bacon / Bacon Brawler     | party | `hot`, `savory` | High-speed glass cannon                              |
+
+These ids are the current seed party. Replace or extend via an active delta before treating art/code as final. Do not list `egg-scramble`, `pancake`, or party-role `toast` here.
 
 ## Enemies
 
@@ -58,12 +58,14 @@ These ids are **canonical placeholders**. Replace or extend via an active delta 
 
 ### Starter encounter archetypes (seed)
 
-| id                 | display_name      | intent                          |
-|--------------------|-------------------|---------------------------------|
-| `burnt-crumb`      | Burnt Crumb       | Trash mob                       |
-| `sour-milk`        | Sour Milk         | Debuff / DoT                    |
-| `hangry-waffle`    | Hangry Waffle     | Elite bruiser                   |
-| `kitchen-timer`    | Kitchen Timer     | Boss — escalating pressure      |
+Live enemy seed matches the kitchen title poster. Identity only — no skill math. Tags may stay placeholder-quality.
+
+| id               | display_name       | role  | notes                                           |
+|------------------|--------------------|-------|-------------------------------------------------|
+| `espresso-mug`   | Evil Espresso Mug  | enemy | Enemy                                           |
+| `burnt-toast`    | Burnt Toast        | enemy | Toast is no longer a party tank                 |
+| `fried-egg`      | Fried Egg Fiend    | enemy | Enemy                                           |
+| `kitchen-timer`  | Kitchen Timer      | enemy | Oven Boss stand-in — escalating pressure        |
 
 ## Skills (minimal contract)
 
