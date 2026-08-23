@@ -17,9 +17,11 @@ Only one phase is active at a time. The run never advances the map while Combat 
 
 ## Session flow
 
+Until a character-select UI exists, **Title Play** starts a run with **exactly one starter** and **skips** Character select. The long-term diagram still includes that step.
+
 ```
 Title / Hub
-    → Character select
+    → Character select  [skipped for now: Title Play starts a run with one starter]
     → Run start (generate map, place party at start node)
     → [Run phase]
          → Player selects an available connected node
