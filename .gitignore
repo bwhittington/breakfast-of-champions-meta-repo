@@ -1,6 +1,9 @@
 # Nested Godot repo — tracked independently
 /game-project/
 
+# Agent worktrees (dispatch)
+.worktrees/
+
 # OS / editor
 .DS_Store
 Thumbs.db

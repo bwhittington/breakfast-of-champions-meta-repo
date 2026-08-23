@@ -2,6 +2,9 @@
 
 Two-repo workspace. Treat paths carefully.
 
+**Agent bindings:** Read `CLAUDE.md` before `/gh-issue`, `/dispatch`, or `/opsx-*`.
+It defines the OpenSpec ↔ GitHub issue bridge, repo slugs, labels, and traceability.
+
 ## Layout
 
 - `specs/` — design source of truth
@@ -22,12 +25,15 @@ Open this folder (`breakfast-of-champions-meta/`) as the Cursor workspace root.
 
 Use slash commands (restart Cursor if they are missing):
 
-- `/opsx-explore` — think through an idea before committing
-- `/opsx-propose` — draft proposal, specs, design, and tasks
+- `/opsx-groom` — brainstorm + ask clarifying questions, then gated propose
+- `/opsx-explore` — freeform thinking (no required brief)
+- `/opsx-propose` — draft proposal, specs, design, and tasks (when the ask is already clear)
 - `/opsx-apply` — implement the change from its task list
 - `/opsx-sync` — merge delta specs into main specs
 - `/opsx-archive` — finish a change and archive it
 - `/opsx-update` — revise planning artifacts
+
+Prefer `/opsx-groom` over bare `/opsx-propose` when the idea is vague or player-facing.
 
 CLI checks: `openspec list`, `openspec show <change>`, `openspec validate <change>`.
 

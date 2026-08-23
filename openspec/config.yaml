@@ -1,0 +1,31 @@
+schema: spec-driven
+
+context: |
+  Game: Breakfast of Champions (Godot 4.3), dual-repo workspace.
+  Canonical behavior: specs/canonical/{game_loop,characters,map_system}.md
+  Implementation lives in game-project/ (separate git remote).
+  Agent bindings and GitHub/OpenSpec bridge: CLAUDE.md (required reading).
+  Pipeline: /opsx-propose → slice tasks into /gh-issue → /dispatch (or /opsx-apply solo).
+  Issues cite SPEC:/CHANGE:/TASK: paths; do not duplicate full design into tickets.
+
+rules:
+  proposal:
+    - Reference which specs/canonical/*.md files the change touches
+    - Include a Non-goals section
+  tasks:
+    - Each task must be independently shippable as one GitHub issue
+    - Phrase tasks so acceptance criteria can be copied into /gh-issue bodies
+    - Note target repo: game (bwhittington/breakfast-of-champions) vs meta
+  specs:
+    - Delta requirements must not contradict untouched canonical sections
+    - Prefer SHALL/MUST language for behavior agents will implement
+
+operations:
+  apply:
+    guidance:
+      - Read CLAUDE.md bindings before editing game-project/
+      - Keep implementation inside game-project/; keep specs in meta
+  archive:
+    guidance:
+      - Sync accepted behavior into specs/canonical/ (and openspec/specs/ if mirrored)
+      - Summarize which GitHub issues/PRs closed the change
